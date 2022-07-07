@@ -1,0 +1,21 @@
+<form #login="ngForm" ngSubmit="submit(login)">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" required name="email" #email="ngModel" [(ngModel)]="Email" class="form-control"
+            id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div [hidden]="email.valid || email.untouched "  class="alert alert-danger">
+        <span>Enter Email</span>
+    </div>
+    
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" maxlength="5" required name="password" #password="ngModel" [(ngModel)]="Pass" class="form-control"
+            id="exampleInputPassword1">
+    </div>
+    <div [hidden]="password.valid || password.untouched" class="alert alert-danger">
+        <span>Enter Password</span>
+    </div>
+
+    <button [disabled]="login.invalid" type="submit" class="btn btn-primary">Submit</button>
+</form>

@@ -1,0 +1,17 @@
+<h1 style="text-align: center;">Stocks</h1>
+<table class="table">
+    <thead>
+        <th>Name</th>
+        <th>Price</th>
+        <th>qty</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let stock of stocks">
+            <ng-template [ngIf]="stock.price > 800">
+                <td>{{stock.name}}</td>
+                <td>{{stock.price}}</td>
+                <td>{{stock.qty}}</td>
+            </ng-template>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,12 @@
+<div class="row">
+<div class="col p-3" *ngFor="let sd of student; let i = index">
+
+    <div class="card" [routerLink]="['/carddetail',{id:i}]"  style="width: 18rem;">
+        <img [src]="sd.img" class="card-img-top" alt="...">
+    <div class="card-body">
+      <p class="card-text">{{sd.name}}</p>
+      <p class="card-text">{{sd.roll}}</p>
+    </div>
+</div>
+</div>
+</div>

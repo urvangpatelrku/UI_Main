@@ -1,0 +1,30 @@
+//m thi name chalu thatu hoy to
+db.stud.find({name:{$regex:/^m/}})
+
+//chhele m aavtu hoy to
+db.stud.find({name:{$regex:/m$/}})
+
+//vachhe game tya lin aavtu hoy to
+db.stud.find({name:{$regex:/lin/}})
+
+//line m thi start thati hoy to
+db.stud.find({name:{$regex:/m/,$option:"si"}})
+
+//json data puchay to tene import karva mate
+mongoimport --db databasename --collection res --file D:\restaurants.json
+
+//sort
+db.mycol.find({},{"title":1,_id:0}).sort({"title":-1}) 
+
+//Aggregation
+
+db.tech.aggregate([{$group : {_id : "$name", total_sessions : {$sum : 1}}}]) 
+db.tech.aggregate([{$group : {_id : "$name", total_sessions : {$avg : "$session"}}}])
+db.tech.aggregate([{$group : {_id : "$name", total_sessions : {$min : "$session"}}}])
+db.tech.aggregate([{$group : {_id : "$name", total_sessions : {$max : "$session"}}}])
+
+
+
+db.programmers.aggregate([{$group : {_id: "$type", TotalRecords: {$sum : 1}}}])
+db.writers.aggregate([{$group:{_id:"$author",totalbook:{$sum:1}}}])
+

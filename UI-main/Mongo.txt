@@ -1,0 +1,55 @@
+﻿//update data aa query thi khali ak j update thase
+db.stud.update({name:raj},{$set:{name:dev}})
+
+//vadhare data update karva mate
+db.stud.updateMany({name:raj},{$set:{name:dev}})
+
+//upsert aa no use data hase to update thase and nai hoy to insert thai jase ok
+db.stud.update({name:raj},{$set:{name:dev}},{upsert:true})
+
+//delete 
+db.rku.deleteOne({name:"raj"})
+
+db.rku.deleteMany({})
+
+db.rku.drop()
+
+//output with status equals "B"
+db.rku.find({branch:"mca"}).pretty()
+
+//output with name field only
+db.rku.find({branch:"MCA"},{name:1}).pretty()
+
+//output without id aetle k id na aavu joye
+db.rku.find({branch:"MCA"},{name:1,_id:0}).pretty()
+
+//find filter to "active:true" and get only the first filed with "active:true" values
+db.rku.find({Active:true}).limit(1)
+
+//set the filter to “active :ture” and get only the first field with “active : true” value by skipping the 1st  field
+db.rku.find({Active:true}).skip(1).limit(1)
+
+//Retrieves all documents from the inventory collection where status equals either "A" or "D".
+db.rku.find({branch:MCA,grade:"A"})
+
+//Retrieve documents in the inventory collection where the status equals "A" and qty is less than ($lt (Links to an external site.)Links to an external site.) 30
+db.rku.find({$or:[{branch:"MCA"},{grade:{$lt:B}}]})
+
+//rename collection
+db.stud.renameCollection("Mark")
+
+//m thi name chalu thatu hoy to
+db.stud.find({name:{$regex:/^m/}})
+
+//chhele m aavtu hoy to
+db.stud.find({name:{$regex:/m$/}})
+
+//vachhe game tya lin aavtu hoy to
+db.stud.find({name:{$regex:/lin/}})
+
+//line m thi start thati hoy to
+db.stud.find({name:{$regex:/m/,$option:"si"}})
+
+//json data puchay to tene import karva mate
+mongoimport --db databasename --collection res --file D:\restaurants.json
+
